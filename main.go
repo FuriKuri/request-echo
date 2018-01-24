@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -17,6 +19,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			request = append(request, fmt.Sprintf("%v: %v", name, h))
 		}
 	}
+
+	bodyBuffer, _ := ioutil.ReadAll(r.Body)
+	request = append(request, fmt.Sprintf("Body: %v", string(bodyBuffer)))
 
 	fmt.Fprintf(w, "%s", request)
 }
