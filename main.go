@@ -13,7 +13,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	request += url
 	request += fmt.Sprintf("Host: %v\n", r.Host)
 	for name, headers := range r.Header {
-		// name = strings.ToLower(name)
 		for _, h := range headers {
 			request += fmt.Sprintf("%v: %v\n", name, h)
 		}
