@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -21,6 +22,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	bodyBuffer, _ := ioutil.ReadAll(r.Body)
 	request += fmt.Sprintf("Body: %v\n", string(bodyBuffer))
 
+	log.Printf("%s", request)
 	fmt.Fprintf(w, "%s", request)
 }
 
