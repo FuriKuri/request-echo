@@ -35,5 +35,5 @@ func getEnv(key, fallback string) string {
 
 func main() {
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":" + getEnv("PORT", "8080"), nil)
+	http.ListenAndServe(":" + getEnv("PORT", "80"), nil)
 }
